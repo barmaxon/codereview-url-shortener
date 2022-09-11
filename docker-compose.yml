@@ -1,0 +1,72 @@
+version: '3'
+services:
+
+    #PHP Service
+    php:
+        build:
+            context: .
+            dockerfile: ./docker/php/Dockerfile
+        container_name: urlshort_php
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        restart: unless-stopped
+        tty: true
+        working_dir: /var/www
+        environment:
+            PHP_IDE_CONFIG: 'serverName=urlshort'
+        volumes:
+            - ./:/var/www/
+            - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+            - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+        networks:
+            - urlshort-network
+
+    #Nginx Service
+    nginx:
+        image: nginx:alpine
+        container_name: urlshort_nginx
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "8083:80"
+        volumes:
+            - ./:/var/www/
+            - ./docker/nginx/config/:/etc/nginx/conf.d/
+        networks:
+            - urlshort-network
+
+    #MySQL Service
+    db:
+        image: mariadb:latest
+        container_name: urlshort_db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "33063:3306"
+        volumes:
+            - ./docker/db:/var/lib/mysql
+        environment:
+            MARIADB_DATABASE: urlshort
+            MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
+        networks:
+            - urlshort-network
+    redis:
+        image: redis:alpine
+        container_name: urlshort_redis
+        restart: unless-stopped
+        tty: true
+        networks:
+            - urlshort-network
+    mailhog:
+        image: mailhog/mailhog
+        container_name: urlshort_mailhog
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "18025:8025"
+        networks:
+            - urlshort-network
+#Docker Networks
+networks:
+    urlshort-network:
+        driver: bridge
