@@ -2,7 +2,13 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
+use Psr\Log\LogLevel;
+use ReflectionClass;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -10,7 +16,7 @@ class Handler extends ExceptionHandler
     /**
      * A list of exception types with their corresponding custom log levels.
      *
-     * @var array<class-string<\Throwable>, \Psr\Log\LogLevel::*>
+     * @var array<class-string<\Throwable>, LogLevel::*>
      */
     protected $levels = [
         //
@@ -41,10 +47,21 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
+        $this->reportable(static function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e): Response|JsonResponse|SymfonyResponse
+    {
+        if ($e instanceof ModelNotFoundException) {
+            $rClass = new ReflectionClass($e->getModel());
+            return response()->json([
+                'message' => "{$rClass->getShortName()} with {$e->getIds()[0]} ID is not found"
+            ]);
+        }
+        return parent::render($request, $e);
     }
 }
