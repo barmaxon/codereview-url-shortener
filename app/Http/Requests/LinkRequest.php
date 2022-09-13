@@ -29,8 +29,9 @@ class LinkRequest extends FormRequest
         if ($this->link) {
             $uniqueRule->ignoreModel($this->link);
         }
+
         $prefix = $this->manyLinksProvided ? "$this->prefix.*." : '';
-        return [
+        $rules = [
             "{$prefix}long_url" => [
                 'bail',
                 'required',
@@ -38,6 +39,7 @@ class LinkRequest extends FormRequest
                 'max:2048',
                 $uniqueRule,
                 'regex:'.self::URL_VALIDATION_REGEX,
+                //todo figure out a way to only check it last to not waste response time when it's not needed
                 function ($attribute, $value, $fail) {
                     try {
                         $this->client->get($value);
@@ -50,6 +52,11 @@ class LinkRequest extends FormRequest
             "{$prefix}title" => 'string|max:255',
             "{$prefix}tags" => 'array'
         ];
+
+        if ($this->manyLinksProvided) {
+            $rules = array_merge([$this->prefix => 'bail|array|max:5'], $rules);
+        }
+        return $rules;
     }
 
     protected function prepareForValidation(): void
