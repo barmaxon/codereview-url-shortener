@@ -1,0 +1,301 @@
+_type: export
+__export_format: 4
+__export_date: 2022-09-13T08:17:17.084Z
+__export_source: insomnia.desktop.app:v2022.5.1
+resources:
+  - _id: req_e4d10f02f41c4d62b681cef0a63da211
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1662921356861
+    created: 1662920060041
+    url: "{{ _.host }}/links"
+    name: list
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1662920060041
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    parentId: null
+    modified: 1662920057625
+    created: 1662920057625
+    name: codereview-url-short
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_389e319485204073a746b6b63a11aa4d
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1663053368024
+    created: 1663049500109
+    url: "{{ _.host }}/stats?from=2022-09-13&to=2022-09-14"
+    name: stats
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_569c0b0984cb408885aac2cd6bfda0ba
+        name: Accept
+        value: application/json
+        description: ""
+    authentication: {}
+    metaSortKey: -1662710358182.625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_47ae0db280e843b3bdb35c26f33a0f32
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1663054794855
+    created: 1663054759730
+    url: "{{ _.host }}/stats/e14f0993"
+    name: "link stats "
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_569c0b0984cb408885aac2cd6bfda0ba
+        name: Accept
+        value: application/json
+        description: ""
+    authentication: {}
+    metaSortKey: -1662605507253.4375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ead15ba905294ac0970294b838501667
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1663006592787
+    created: 1662999444011
+    url: "{{ _.host }}/links/2"
+    name: show
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1662500656324.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c3c9645a899c4a4783984224950385f2
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1663057024192
+    created: 1662921362210
+    url: "{{ _.host }}/links"
+    name: store
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        [
+        	{
+        		"long_url": "google.com",
+        		"title": "Гхугхл",
+        		"tags": ["social"]
+        	},
+        	{
+        		"long_url": "vk.com",
+        		"title": "ВК",
+        		"tags": ["social"]
+        	},
+        	{
+        		"long_url": "wikipedia.org",
+        		"title": "Wiki",
+        		"tags": ["wiki", "www"]
+        	}
+        ]
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b1f8d30e7ff841ac958e8e86631dc902
+      - id: pair_fc0eb926e3644322aca8bca8a1edcb70
+        name: Accept
+        value: application/json
+        description: ""
+    authentication: {}
+    metaSortKey: -1662081252607.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5ce220445d4646f39c4bd69fa0c61045
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1663057008996
+    created: 1662923877524
+    url: "{{ _.host }}/links"
+    name: store one
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"long_url": "mamba.com",
+        	"title": "Mamba",
+        	"tags": ["social"]
+        }	
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b1f8d30e7ff841ac958e8e86631dc902
+      - id: pair_fc0eb926e3644322aca8bca8a1edcb70
+        name: Accept
+        value: application/json
+        description: ""
+    authentication: {}
+    metaSortKey: -1661661848890.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d36048b551954e7eadbdfeb52a8fee95
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1663054769396
+    created: 1662999528929
+    url: "{{ _.host }}/links/2"
+    name: update
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"long_url": "google.com",
+        	"title": "Google Search",
+        	"tags": ["search engine", "com"]
+        }	
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b1f8d30e7ff841ac958e8e86631dc902
+      - id: pair_fc0eb926e3644322aca8bca8a1edcb70
+        name: Accept
+        value: application/json
+        description: ""
+    authentication: {}
+    metaSortKey: -1661452147032.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6ec43c128f63400aa0df0ad2bfd9528b
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1663008492337
+    created: 1663008455183
+    url: "{{ _.host }}/links/4"
+    name: delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_fc0eb926e3644322aca8bca8a1edcb70
+        name: Accept
+        value: application/json
+        description: ""
+    authentication: {}
+    metaSortKey: -1661347296103.1875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_1839eb636c12da53f77855bab9a3eb3db3ceed2e
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1662920083971
+    created: 1662920057644
+    name: Base Environment
+    data:
+      host: http://localhost:8083/api
+    dataPropertyOrder:
+      "&":
+        - host
+    color: null
+    isPrivate: false
+    metaSortKey: 1662920057644
+    _type: environment
+  - _id: jar_1839eb636c12da53f77855bab9a3eb3db3ceed2e
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1662921829685
+    created: 1662920057645
+    name: Default Jar
+    cookies:
+      - key: XSRF-TOKEN
+        value: eyJpdiI6InBTdHFSWGswK1NmVDJ4MFJ5djZERVE9PSIsInZhbHVlIjoiMGVWN1ZzTUs4eVpUODlUSkRSVDY1QUl6bUhtOUt1eC8xMVNxTFg4cWRBWXg1eGk5QjJTREZvV2JhdTl4SXVNRk82Vkk3QzljWW15L3pUd0FDYTNuWWx6cVBiZ2liSUFza1M3dDF4VFJTVkRxaGlDSlBoSFphZWYxQzFzZlFydXEiLCJtYWMiOiI2NmFlYTQxNjQ2ZDJhYTJiOTVhMGI2MGY0MDRmZDg1MmZjYzUxYmMyODY5YTcyNDM2OTdmNDEzNzBjMDQzNDAyIiwidGFnIjoiIn0%3D
+        expires: 2022-09-11T20:43:49.000Z
+        maxAge: 7200
+        domain: localhost
+        path: /
+        extensions:
+          - samesite=lax
+        hostOnly: true
+        creation: 2022-09-11T18:42:31.150Z
+        lastAccessed: 2022-09-11T18:43:49.684Z
+        id: "7039581406579067"
+      - key: codereview_url_shortener_session
+        value: eyJpdiI6ImxjN1h5a0ZhcFhWaGRkOGJTNHNxWFE9PSIsInZhbHVlIjoid3Q3M0VxZXg0clpXcjZib2JSQStUZDQ5NENQMHZpNkRtRXExRUpnT2lYMVoycnB5cE1XdVBtdVlXL0UzL0RIYk14Nm1pV2g5cGlDYVcwRkVvT2YzRlJnMnVuNkJISUpuTkVqaEhHeHdDVnEvOGxkTGRIdmprR3hjNDNPTzRad2oiLCJtYWMiOiI2MGVlNzlkNmY5MTc3Y2ViYWQ4Nzg4YWI4YTllYjc2NjFiYjZkZTM4MjQ4YWE4ODhlMTFlMTZmOTQyOWY3YjUzIiwidGFnIjoiIn0%3D
+        expires: 2022-09-11T20:43:49.000Z
+        maxAge: 7200
+        domain: localhost
+        path: /
+        httpOnly: true
+        extensions:
+          - samesite=lax
+        hostOnly: true
+        creation: 2022-09-11T18:42:31.150Z
+        lastAccessed: 2022-09-11T18:43:49.684Z
+        id: "7223003946406217"
+    _type: cookie_jar
+  - _id: spc_a992fa3a8a6e4593bab518eb5d6dd742
+    parentId: wrk_f81348ed2ac44275ac5c00ab3d67d2f3
+    modified: 1662920057636
+    created: 1662920057636
+    fileName: codereview-url-short
+    contents: ""
+    contentType: yaml
+    _type: api_spec
